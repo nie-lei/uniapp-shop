@@ -5,7 +5,6 @@
 		<view class="cates_container">
 			<!-- 左侧菜单 -->
 			<scroll-view class="left_menu" 
-						show-scrollbar="true" 
 						enable-flex = "true"
 						scroll-y="true" >
 				<view v-for="(item,index) in leftMenuList" 
@@ -27,7 +26,9 @@
 						<text class="delimiter">/</text>
 					</view>
 					<view class="goods_list">
-						<navigator v-for="(item1,index1) of item.children" :key="cat_id">
+						<navigator v-for="(item1,index1) of item.children" 
+							:key="cat_id"
+							:url="'/pages/goods_list/index?cid='+item1.cat_id">
 							<image mode="widthFix" :src="item1.cat_icon"></image>
 							<view class="goods_name">{{item1.cat_name}}</view>
 						</navigator>

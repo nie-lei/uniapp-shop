@@ -32,6 +32,12 @@
           "query": "interval=4000&autoplay=false",
           "id": 0,
           "pathName": "pages/category/index"
+        },
+        {
+          "name": "商品列表",
+          "query": "cid=5",
+          "id": 1,
+          "pathName": "pages/goods_list/index"
         }
       ]
     }
