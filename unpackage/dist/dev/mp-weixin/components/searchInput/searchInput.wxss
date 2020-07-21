@@ -1,17 +1,11 @@
 
-page.data-v-7ed5538a{
-	--themeColor:#eb4450;/* 主题颜色背景 */
-	font-size: 28rpx; /* 统一字体大小 */
-}
-.search_input.data-v-7ed5538a{
+.search_input{
   height: 90rpx;
   padding: 10rpx;
   /* 使用主题颜色 */
-  /* background-color: var(--themeColor); */
-  background-color: #eb4450;
-  font-size: 28rpx; /* 统一字体大小 */
+  background-color: var(--themeColor);
 }
-.search_input navigator.data-v-7ed5538a{
+.search_input navigator{
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;

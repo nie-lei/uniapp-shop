@@ -20,22 +20,20 @@ export default {
 	  padding: 0;
 	  margin: 0;
 	  box-sizing: border-box;
+		height: 100%;
+		--themeColor:#eb4450;/* 主题颜色背景 */
+		font-size: 28rpx; /* 统一字体大小 */
 	}
-	.container {
-	  height: 100%;
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  justify-content: space-between;
-	  padding: 200rpx 0;
-	  box-sizing: border-box;
-	} 
-	
-/* 解决头条小程序组件内引入字体不生效的问题 */
-/* #ifdef MP-TOUTIAO */
-@font-face {
-	font-family: uniicons;
-	src: url('/static/uni.ttf');
+	// .container {
+	//   height: 100%;
+	//   display: flex;
+	//   flex-direction: column;
+	//   align-items: center;
+	//   justify-content: space-between;
+	//   padding: 200rpx 0;
+	//   box-sizing: border-box;
+	// } 
+image{
+	width: 100%;
 }
-/* #endif */
 </style>

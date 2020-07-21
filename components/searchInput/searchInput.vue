@@ -7,19 +7,12 @@
 <script>
 </script>
 
-<style scoped>
-	page{
-		--themeColor:#eb4450;/* 主题颜色背景 */
-		font-size: 28rpx; /* 统一字体大小 */
-	}
-	
+<style>
 	.search_input{
 	  height: 90rpx;
 	  padding: 10rpx;
 	  /* 使用主题颜色 */
-	  /* background-color: var(--themeColor); */
-	  background-color: #eb4450;
-	  font-size: 28rpx; /* 统一字体大小 */
+	  background-color: var(--themeColor);
 	}
 	.search_input navigator{
 	  height: 100%;
