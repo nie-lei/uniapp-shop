@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var searchInput = function searchInput() {__webpack_require__.e(/*! require.ensure | components/searchInput/searchInput */ "components/searchInput/searchInput").then((function () {return resolve(__webpack_require__(/*! ../../components/searchInput/searchInput.vue */ 46));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var searchInput = function searchInput() {__webpack_require__.e(/*! require.ensure | components/searchInput/searchInput */ "components/searchInput/searchInput").then((function () {return resolve(__webpack_require__(/*! ../../components/searchInput/searchInput.vue */ 82));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -180,35 +180,38 @@ __webpack_require__.r(__webpack_exports__);
       leftMenuList: [], //左侧菜单
       rightContents: [], //右侧内容
       currentIndex: 0, //被选中的菜单索引
-      sTop: 212 //scroll滚动条距离顶部的距离
+      sTop: 0 //scroll滚动条距离顶部的距离
     };
   },
   Cates: [],
   methods: {
     //切换菜单
-    taggleMenu: function taggleMenu(index) {
+    taggleMenu: function taggleMenu(index) {var _this = this;
       //1.切换选中
       this.currentIndex = index;
       //2.修改右侧商品
       this.rightContents = this.Cates[index].children;
       //商品重新置顶
-      this.sTop = 0;
+      this.$nextTick(function () {
+        _this.sTop = 0.1;
+      });
+
     },
     //获取数据
-    getCategories: function getCategories() {var _this = this;
+    getCategories: function getCategories() {var _this2 = this;
       this.$myRequest({
         url: "/categories" }).
       then(function (data) {
         //获取所有数据
-        _this.Cates = data.data.message;
+        _this2.Cates = data.data.message;
         //将数据存储到本地存储中
-        uni.setStorageSync("cates", { time: Date.now(), data: _this.Cates });
+        uni.setStorageSync("cates", { time: Date.now(), data: _this2.Cates });
         //构造左侧菜单数据
-        _this.leftMenuList = _this.Cates.map(function (res) {
+        _this2.leftMenuList = _this2.Cates.map(function (res) {
           return { "id": res.cat_id, "name": res.cat_name };
         });
         //构造右侧内容数据
-        _this.rightContents = _this.Cates[0].children;
+        _this2.rightContents = _this2.Cates[0].children;
       });
     } },
 

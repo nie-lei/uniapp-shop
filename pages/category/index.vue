@@ -48,7 +48,7 @@
 				leftMenuList:[],//左侧菜单
 				rightContents:[],//右侧内容
 				currentIndex:0,//被选中的菜单索引
-				sTop:212//scroll滚动条距离顶部的距离
+				sTop:0//scroll滚动条距离顶部的距离
 			}
 		},
 		Cates:[],
@@ -60,7 +60,10 @@
 				//2.修改右侧商品
 				this.rightContents = this.Cates[index].children;
 				//商品重新置顶
-				this.sTop = 0;
+				this.$nextTick(()=>{
+					this.sTop = 0.1;
+				})
+				
 			},
 			//获取数据
 			getCategories(){

@@ -7776,8 +7776,15 @@ function normalizeComponent (
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequest = void 0;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} // 封装promise，公共请求方法
-var BASE_URL = "https://api-hmugo-web.itheima.net/api/public/v1";
+var ajaxTimes = 0; //设置同时请求的数量，
 var myRequest = function myRequest(options) {
+  ajaxTimes++;
+  var BASE_URL = "https://api-hmugo-web.itheima.net/api/public/v1";
+  //显示加载效果
+  uni.showLoading({
+    title: '加载中',
+    mask: true });
+
   return new Promise(function (resolve, reject) {
     uni.request(_objectSpread({},
     options, {
@@ -7791,6 +7798,13 @@ var myRequest = function myRequest(options) {
           title: "请求失败" });
 
         reject(err);
+      },
+      complete: function complete() {
+        //防止同时发送多次请求，前面成功的请求会关闭提示框，后面还在请求
+        ajaxTimes--;
+        if (ajaxTimes <= 0) {
+          uni.hideLoading();
+        }
       } }));
 
   });

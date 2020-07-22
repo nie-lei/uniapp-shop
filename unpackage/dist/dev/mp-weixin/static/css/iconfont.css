@@ -6,6 +6,7 @@
   url('//at.alicdn.com/t/font_1932543_sdzoxilarx.ttf?t=1595405810669') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
   url('//at.alicdn.com/t/font_1932543_sdzoxilarx.svg?t=1595405810669#iconfont') format('svg'); /* iOS 4.1- */
 }
+
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;
@@ -13,74 +14,67 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .icon-shoucang:before {
   content: "\e8b9";
 }
+
 .icon-shoucang1:before {
   content: "\e8c6";
 }
+
 .icon-icon-test:before {
   content: "\e638";
 }
+
 .icon-icon-test1:before {
   content: "\e63a";
 }
+
 .icon-icon-test2:before {
   content: "\e63b";
 }
+
 .icon-cart:before {
   content: "\e63c";
 }
+
 .icon-icon-test4:before {
   content: "\e63d";
 }
+
 .icon-share:before {
   content: "\e63e";
 }
+
 .icon-kefu:before {
   content: "\e64d";
 }
+
 .icon-icon-test7:before {
   content: "\e650";
 }
+
 .icon-icon-test10:before {
   content: "\e659";
 }
+
 .icon-icon-test11:before {
   content: "\e65a";
 }
+
 .icon-icon-test12:before {
   content: "\e65b";
 }
+
 .icon-icon-test13:before {
   content: "\e65c";
 }
+
 .icon-icon-test14:before {
   content: "\e65e";
 }
+
 .icon-alipay:before {
   content: "\e666";
 }
-
-/*
-	这里可以定义全局样式，page==body，view==div,text==span
-	*/
-page,
-view text,
-swiper,
-swiper-item,
-image,
-navigator {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  height: 100%;
-  --themeColor: #eb4450;
-  /* 主题颜色背景 */
-  font-size: 28rpx;
-  /* 统一字体大小 */
-}
-image {
-  width: 100%;
-}
-

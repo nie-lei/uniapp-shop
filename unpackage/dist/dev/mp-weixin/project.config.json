@@ -38,6 +38,12 @@
           "query": "cid=5",
           "id": 1,
           "pathName": "pages/goods_list/index"
+        },
+        {
+          "name": "商品详情",
+          "query": "goods_id=9832",
+          "id": 2,
+          "pathName": "pages/goods_detail/index"
         }
       ]
     }

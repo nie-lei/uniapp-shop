@@ -13,6 +13,7 @@ export default {
 </script>
 
 <style lang="less">
+@import "./static/css/iconfont.css";
 	/*
 	这里可以定义全局样式，page==body，view==div,text==span
 	*/
