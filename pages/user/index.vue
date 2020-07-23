@@ -9,9 +9,12 @@
 			</view>
 		</view>
 		<!-- 未登录，显示提示用户登录按钮 -->
-		<view class="user_btn" v-else>
-			<navigator url="../login/index">登录</navigator>
+		<view class="user_btn_wrap" v-else>
+			<view class="user_btn">
+				<navigator url="../login/index">登录</navigator>
+			</view>
 		</view>
+		
 		<!-- 用户操作导向内容 -->
 		<view class="user_content">
 			<view class="user_main">
@@ -132,17 +135,24 @@
 				}
 			}
 		}
-		.user_btn{
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			top: 40%;
-			border: 1rpx solid greenyellow;
-			color: greenyellow;
-			font-size: 80rpx;
-			padding: 35rpx;
-			border-radius: 10rpx;
+		.user_btn_wrap{
+			height: 45vh;
+			.user_btn{
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				top: 40%;
+				border: 1rpx solid greenyellow;
+				color: greenyellow;
+				font-size: 80rpx;
+				padding: 40rpx;
+				border-radius: 10rpx;
+				
+			}
 		}
+		
+			
+		
 		.user_content{
 			position: relative;
 			background-color: #fff;

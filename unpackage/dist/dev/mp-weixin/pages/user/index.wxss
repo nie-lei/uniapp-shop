@@ -32,7 +32,10 @@ page {
   margin-top: 40rpx;
   font-size: 35rpx;
 }
-.user_info_wrap .user_btn {
+.user_info_wrap .user_btn_wrap {
+  height: 45vh;
+}
+.user_info_wrap .user_btn_wrap .user_btn {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -41,7 +44,7 @@ page {
   border: 1rpx solid greenyellow;
   color: greenyellow;
   font-size: 80rpx;
-  padding: 35rpx;
+  padding: 40rpx;
   border-radius: 10rpx;
 }
 .user_info_wrap .user_content {
