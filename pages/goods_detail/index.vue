@@ -64,7 +64,6 @@
 			}
 		},
 		onLoad(options) {
-			console.log(typeof options.goods_id)
 			this.queryParams.goods_id = options.goods_id;
 			this.getGoodsDetail()
 		},
@@ -82,7 +81,8 @@
 						//将webp替换为jpg格式
 						// goods_introduce:data.goods_introduce,
 						goods_introduce:data.goods_introduce.replace(/\.webp/g,'.jpg'),
-						pics:data.pics
+						pics:data.pics,
+						num:data.num
 						
 					}
 					console.log(res)
@@ -111,10 +111,25 @@
 					6弹出提示
 			 */
 			handleCartAdd(){
-				//1
-				let cart = uni.getStorageInfoSync("cart")||[];
+				//1获取缓存中的购物车 数组
+				let cart = uni.getStorageSync("cart")||[];
+				//2 判断购物车数组中是否存在该商品对象
+				let index = cart.findIndex(v=>v.goods_id===this.goodsObj.goods_id);
+				if(index===-1){
+					//商品不存在，第一次添加
+					console.log("第一次添加")
+					cart.push(this.goodsObj)
+				}else{
+					//已经存在在购物车数组中，num++
+					console.log("重复添加",cart[index])
+					cart[index].num++;
+				}
+				//将购物车重新添加到缓存
+				uni.setStorageSync("cart",cart);
+				//弹出提示框
 				uni.showToast({
-					title:"添加成功"
+					title:"添加成功",
+					mask:true
 				})
 			}
 				

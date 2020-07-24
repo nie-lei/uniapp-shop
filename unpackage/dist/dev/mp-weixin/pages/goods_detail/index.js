@@ -196,7 +196,6 @@ var _default =
 
   },
   onLoad: function onLoad(options) {
-    console.log(typeof options.goods_id);
     this.queryParams.goods_id = options.goods_id;
     this.getGoodsDetail();
   },
@@ -214,7 +213,8 @@ var _default =
           //将webp替换为jpg格式
           // goods_introduce:data.goods_introduce,
           goods_introduce: data.goods_introduce.replace(/\.webp/g, '.jpg'),
-          pics: data.pics };
+          pics: data.pics,
+          num: data.num };
 
 
         console.log(res);
@@ -242,11 +242,26 @@ var _default =
     			重新把购物车数组填充回缓存中
     		6弹出提示
      */
-    handleCartAdd: function handleCartAdd() {
-      //1
-      var cart = uni.getStorageInfoSync("cart") || [];
+    handleCartAdd: function handleCartAdd() {var _this2 = this;
+      //1获取缓存中的购物车 数组
+      var cart = uni.getStorageSync("cart") || [];
+      //2 判断购物车数组中是否存在该商品对象
+      var index = cart.findIndex(function (v) {return v.goods_id === _this2.goodsObj.goods_id;});
+      if (index === -1) {
+        //商品不存在，第一次添加
+        console.log("第一次添加");
+        cart.push(this.goodsObj);
+      } else {
+        //已经存在在购物车数组中，num++
+        console.log("重复添加", cart[index]);
+        cart[index].num++;
+      }
+      //将购物车重新添加到缓存
+      uni.setStorageSync("cart", cart);
+      //弹出提示框
       uni.showToast({
-        title: "添加成功" });
+        title: "添加成功",
+        mask: true });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
