@@ -66,7 +66,7 @@
 				//商品重新置顶
 				this.sTop = this.old.sTop;
 				this.$nextTick(()=>{
-					this.sTop = 0.1;
+					this.sTop = 0;
 				});
 				// 修改右侧数据
 				this.rightContents = this.Cates[index].children
@@ -131,6 +131,7 @@ template{
 	.cates_container{
 		height: calc(100vh - 110rpx);
 		display: flex;
+	
 		.left_menu{
 			flex: 2;
 			border-right: 1px solid #eee;
@@ -156,6 +157,7 @@ template{
 					display: flex;
 					justify-content: center;
 					align-items: center;
+					margin-top: 25rpx;
 					.delimiter{
 						color: #ccc;
 						padding: 0 10rpx;
@@ -181,6 +183,8 @@ template{
 			}
 		}
 	}
+	
+	
 }
 	
 </style>

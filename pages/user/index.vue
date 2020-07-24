@@ -79,7 +79,7 @@
 					<view class="app_info_item">关于我们</view>
 				</view>
 				<!-- 推荐 -->
-				<view class="recommend_warp">把这个应用推荐给其他人</view>
+				<view class="recommend_warp">推荐此应用给其他人</view>
 			</view>
 			
 		</view>
@@ -114,7 +114,6 @@
 			background-color: var(--themeColor);
 			.user_bg{
 					height: 45vh;
-					//��˹ģ��
 					filter: blur(10rpx);
 			}
 			.user_info{

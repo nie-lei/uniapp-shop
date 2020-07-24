@@ -54,6 +54,7 @@ template {
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
+  margin-top: 25rpx;
 }
 .cates .cates_container .right_content .goods_group .goods_title .delimiter {
   color: #ccc;

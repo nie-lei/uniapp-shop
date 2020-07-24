@@ -198,7 +198,7 @@ __webpack_require__.r(__webpack_exports__);
       //商品重新置顶
       this.sTop = this.old.sTop;
       this.$nextTick(function () {
-        _this.sTop = 0.1;
+        _this.sTop = 0;
       });
       // 修改右侧数据
       this.rightContents = this.Cates[index].children;
