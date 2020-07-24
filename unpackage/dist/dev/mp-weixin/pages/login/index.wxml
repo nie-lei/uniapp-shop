@@ -1,1 +1,1 @@
-<view>登录页面</view>
+<button type="primary" plain="{{true}}" open-type="getUserInfo" data-event-opts="{{[['getuserinfo',[['handleGetUserInfo',['$event']]]]]}}" bindgetuserinfo="__e">登录</button>

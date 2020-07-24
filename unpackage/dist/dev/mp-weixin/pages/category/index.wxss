@@ -1,6 +1,9 @@
 /* page{
 	height: 100%;
 } */
+template {
+  height: 100%;
+}
 .cates {
   height: 100%;
 }

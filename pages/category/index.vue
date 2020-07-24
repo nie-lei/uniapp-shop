@@ -8,7 +8,7 @@
 						enable-flex = "true"
 						scroll-y="true" >
 				<view v-for="(item,index) in leftMenuList" 
-						:key="item" 
+						:key="index" 
 						:scroll-into-view="'top'+index"
 						:id="'top'+index"
 						class="menu_item "
@@ -18,16 +18,16 @@
 				</view>
 			</scroll-view>
 			<!-- 右侧数据 -->
-			<scroll-view class="right_content" scroll-y="true" :scroll-top="sTop">
-				<view v-for="(item,index) of rightContents" class="goods_group" :key="cat_id">
+			<scroll-view class="right_content" scroll-y="true" :scroll-top="sTop" @scroll="scroll">
+				<view v-for="(item,index) in rightContents" class="goods_group" :key="item.cat_id">
 					<view class="goods_title">
 						<text class="delimiter">/</text>
 						<text class="title">{{item.cat_name}}</text>
 						<text class="delimiter">/</text>
 					</view>
 					<view class="goods_list">
-						<navigator v-for="(item1,index1) of item.children" 
-							:key="cat_id"
+						<navigator v-for="item1 in item.children" 
+							:key="item1.cat_id"
 							:url="'/pages/goods_list/index?cid='+item1.cat_id">
 							<image mode="widthFix" :src="item1.cat_icon"></image>
 							<view class="goods_name">{{item1.cat_name}}</view>
@@ -45,25 +45,31 @@
 		///categories
 		data(){
 			return {
+				
 				leftMenuList:[],//左侧菜单
 				rightContents:[],//右侧内容
 				currentIndex:0,//被选中的菜单索引
-				sTop:0//scroll滚动条距离顶部的距离
+				sTop:0,//scroll滚动条距离顶部的距离
+				old: {sTop: 0 }
 			}
 		},
 		Cates:[],
+		
 		methods:{
+			scroll: function(e) {
+				this.old.sTop = e.detail.scrollTop
+			},
 			//切换菜单
 			taggleMenu(index){
 				//1.切换选中
 				this.currentIndex = index;
-				//2.修改右侧商品
-				this.rightContents = this.Cates[index].children;
 				//商品重新置顶
+				this.sTop = this.old.sTop;
 				this.$nextTick(()=>{
 					this.sTop = 0.1;
-				})
-				
+				});
+				// 修改右侧数据
+				this.rightContents = this.Cates[index].children
 			},
 			//获取数据
 			getCategories(){
@@ -106,6 +112,7 @@
 			 }
 		 }
 		},
+		
 		components:{
 			searchInput
 		}
@@ -116,6 +123,9 @@
 /* page{
 	height: 100%;
 } */
+template{
+	height: 100%;
+}
 .cates{
 	height: 100%;
 	.cates_container{
