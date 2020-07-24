@@ -1,0 +1,1 @@
+<view><view class="revice_address_row"><view class="address_btn"><button type="primary" plain="{{true}}" data-event-opts="{{[['tap',[['handleChooseAddress2',['$event']]]]]}}" bindtap="__e">获取收获地址</button></view></view></view>
