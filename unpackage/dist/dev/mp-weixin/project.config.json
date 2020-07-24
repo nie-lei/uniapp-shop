@@ -1,82 +1,57 @@
 {
-	"description": "项目配置文件。",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": true,
-		"es6": false,
-		"enhance": false,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": false,
-		"coverView": true,
-		"nodeModules": false,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "",
-	"appid": "wx9d17b7981cf81e72",
-	"projectname": "uniapp-demo",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"name": "分类",
-					"query": "interval=4000&autoplay=false",
-					"id": 0,
-					"pathName": "pages/category/index"
-				},
-				{
-					"name": "商品列表",
-					"query": "cid=5",
-					"id": 1,
-					"pathName": "pages/goods_list/index"
-				},
-				{
-					"name": "商品详情",
-					"query": "goods_id=9832",
-					"id": 2,
-					"pathName": "pages/goods_detail/index"
-				},
-				{
-					"name": "购物车",
-					"query": "goods_id=9832",
-					"id": 3,
-					"pathName": "pages/cart/index"
-				}
-			]
-		}
-	}
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "",
+  "appid": "wx9d17b7981cf81e72",
+  "projectname": "uniapp-demo",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": 0,
+      "list": [
+        {
+          "name": "分类",
+          "query": "interval=4000&autoplay=false",
+          "id": 0,
+          "pathName": "pages/category/index"
+        },
+        {
+          "name": "商品列表",
+          "query": "cid=5",
+          "id": 1,
+          "pathName": "pages/goods_list/index"
+        },
+        {
+          "name": "商品详情",
+          "query": "goods_id=9832",
+          "id": 2,
+          "pathName": "pages/goods_detail/index"
+        },
+        {
+          "name": "购物车",
+          "query": "goods_id=9832",
+          "id": 3,
+          "pathName": "pages/cart/index"
+        }
+      ]
+    }
+  }
 }

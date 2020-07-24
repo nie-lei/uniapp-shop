@@ -140,28 +140,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
-    return {};
-
+    return {
+      address: {} };
 
   },
-  methods: {
+  onShow: function onShow() {
     /* 
+                              2页面加载完毕
+                              	1获取本地存储中的地址数据
+                              	2把数据设置给data中的一个变量
+                              */
+    this.address = uni.getStorageSync("address");
+  },
+  methods: {
+    /**
              1获取用户的收货地址
              	1绑定点击事件
              	2调用小程序内置 api 获取用户的收货地址
-             	 
-             2获取用户对小程序所授予获取地址的 权限状态 scope
-             	1假设用户点击获取收货地址的提示框确定 authSetting scope.address 
-             		scope值true 可以直接调用获取收货地址
-             	2假设用户从来没有调用过收货地址的api
-             		scope undefined 可以直接调用获取收货地址
+             	3获取用户对小程序所授予获取地址的 权限状态 scope
+             		1假设用户点击获取收货地址的提示框确定 authSetting scope.address 
+             			scope值true 可以直接调用获取收货地址
+             		2假设用户从来没有调用过收货地址的api
+             			scope undefined 可以直接调用获取收货地址
              		3假设用户点击获取收货地址的提示框取消
-             		scope值false
-             		1）诱导用户自己打开授权设置页面当用户重新给与获取地址权限的时候
-             		2）获取收货地址
+             			scope值false
+             			1）诱导用户自己打开授权设置页面当用户重新给与获取地址权限的时候
+             			2）获取收货地址
+             		4把获取到的收货地址存入到本地存储中
+             2页面加载完毕
+             	1获取本地存储中的地址数据
+             	2把数据设置给data中的一个变量
               */
     handleChooseAddress: function handleChooseAddress() {
       //1
@@ -198,7 +218,8 @@ var _default =
           if (scopeAddress === true || scopeAddress === undefined) {
             uni.chooseAddress({
               success: function success(res1) {
-                console.log(res1);
+                //将地址信息存入缓存
+                uni.setStorageSync("address", res1);
               } });
 
           } else {
@@ -210,7 +231,8 @@ var _default =
               success: function success(res2) {
                 uni.chooseAddress({
                   success: function success(res3) {
-                    console.log(res3);
+                    //将地址信息存入缓存
+                    uni.setStorageSync("address", res3);
                   } });
 
               } });
@@ -219,20 +241,23 @@ var _default =
         } });
 
     },
-    handleChooseAddress2: function handleChooseAddress2() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res1, scopeAddress, res2;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;_context.next = 3;return (
+    //获取地址信息（优化）
+    handleChooseAddress2: function handleChooseAddress2() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res1, scopeAddress, address;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;_context.next = 3;return (
 
 
                   _this.$myUniApi.getSetting());case 3:res1 = _context.sent;
                 scopeAddress = res1.authSetting["scope.address"];
                 //2.判断权限状态
                 if (!(scopeAddress === false)) {_context.next = 8;break;}_context.next = 8;return (
+
                   _this.$myUniApi.openSetting());case 8:_context.next = 10;return (
 
 
-                  _this.$myUniApi.chooseAddress());case 10:res2 = _context.sent;
-                console.log(res2);_context.next = 16;break;case 14:_context.prev = 14;_context.t0 = _context["catch"](0);case 16:case "end":return _context.stop();}}}, _callee, null, [[0, 14]]);}))();
+                  _this.$myUniApi.chooseAddress());case 10:address = _context.sent;
+                //5.将地址信息存入缓存中
+                uni.setStorageSync("address", address);_context.next = 17;break;case 14:_context.prev = 14;_context.t0 = _context["catch"](0);
 
-
+                console.log(_context.t0);case 17:case "end":return _context.stop();}}}, _callee, null, [[0, 14]]);}))();
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
