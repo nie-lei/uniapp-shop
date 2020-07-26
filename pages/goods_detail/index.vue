@@ -69,7 +69,7 @@
 		},
 		methods:{
 			getGoodsDetail(){
-				//路径 /goods/detail
+				//商品详情路径 /goods/detail
 				this.$myRequest({url:"/goods/detail",data:this.queryParams})
 				.then((res)=>{
 					const data = res.data.message;
@@ -82,7 +82,10 @@
 						// goods_introduce:data.goods_introduce,
 						goods_introduce:data.goods_introduce.replace(/\.webp/g,'.jpg'),
 						pics:data.pics,
-						num:data.num
+						num:data.num||1,
+						goods_small_logo:data.goods_small_logo,
+						checked:true,
+						goods_id:data.goods_id
 						
 					}
 					console.log(res)
