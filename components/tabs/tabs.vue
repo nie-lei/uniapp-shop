@@ -1,8 +1,9 @@
 <template>
 	<view class="tabs">
 		<view class="tabs_title ">
-			<view class="title_item" :class="item.isActive?'active':''" 
+			<view class="title_item" 
 				v-for="(item,index) of tabs" :key="value"
+				:class="item.isActive?'active':''" 
 				@click="handleItemTap(index)">
 				{{item.value}}
 			</view>

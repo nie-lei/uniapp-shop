@@ -20,7 +20,7 @@
 			<view class="cart_title">购物车</view>
 			<view class="cart_main">
 				<block v-if="cart.length==0">
-					 还没选中商品
+					 <text style="display: flex;justify-content: center;align-items: center;" >还没添加商品</text>
 					 <image mode="widthFix"
 						src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595753022218&di=cf09fb986cd03506ba99c2dc3fbb90ab&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fe1b1467beea0a9c7d6a56b32bac6d7e5dcd914f7c3e6-YTwUd6_fw658"></image>
 				</block>
@@ -35,7 +35,7 @@
 							</checkbox-group>
 						</view>
 						<!-- 商品图片 -->
-						<navigator class="cart_img_wrap">
+						<navigator class="cart_img_wrap" :url="'../goods_detail/index?goods_id='+item.goods_id">
 							<image mode="widthFix" :src="item.goods_small_logo"></image>
 						</navigator>
 						<!-- 商品信息 -->
@@ -70,7 +70,7 @@
 				<view>包含运费</view>
 			</view>
 			<!-- 结算 -->
-			<view class="order_pay_wrap">
+			<view class="order_pay_wrap" @click="handlePay">
 				结算({{totalNum}})
 			</view>
 		</view>
@@ -136,7 +136,11 @@
 				2取消
 				什么都不做
 			4.2直接修改商品对象的数量 num 
-			5把cart数组重新设置回缓存中和data中 this.setCart	
+			5把cart数组重新设置回缓存中和data中 this.setCart
+		9点击结算
+			1判断有没有收货地址信息
+			2判断用户有没有选购商品
+			3经过以上的验证跳转到支付页面!
 		 */
 		data(){
 			return{
@@ -345,6 +349,25 @@
 				})
 				//判断数组是否为空
 				this.allChecked = this.cart.length!=0?this.allChecked:false;
+			},
+			
+			//结算按钮事件
+			handlePay(){
+				console.log("结算")
+				const totalNum = this.totalNum;
+				if(totalNum<=0){
+					this.$myUniApi.showToast({title:"您还没有选购商品！"}).then();
+					return;
+				}
+				const address = this.address;
+				if(!address.userName){
+					this.$myUniApi.showToast({title:"您还没有添加收货地址！"}).then();
+					return;
+				}
+				uni.navigateTo({
+					url:"/pages/pay/index"
+				})
+				
 			}
 		}
 	}

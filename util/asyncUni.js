@@ -54,3 +54,47 @@ export const showModal= ({content})=>{
 		});
 	})
 }
+
+export const showToast= ({title})=>{
+	return new Promise((resolve,reject)=>{
+		uni.showToast({
+			title: title,
+			icon:"none",
+			success:  (res)=> {
+				resolve(res);
+			},
+			fail:(err)=>{
+				reject(err);
+			}
+		})
+	})
+}
+
+export const login= ()=>{
+	return new Promise((resolve,reject)=>{
+		uni.login({
+			timeout:10000,
+			success: (result) => {
+				resolve(result);
+			},
+			fail: (err) => {
+				reject(err);
+			}
+		})
+	})
+}
+
+export const payment= (pay)=>{
+	return new Promise((resolve,reject)=>{
+		uni.requestPayment({
+			provider:"wxpay",
+			...pay,	
+			success: (result) => {
+				resolve(result);
+			},
+			fail: (err) => {
+				reject(err);
+			}
+		})
+	})
+}
