@@ -39,6 +39,7 @@
 <style lang="less">
 	.tabs{
 		.tabs_title{
+			background-color: #f8f8f8;
 			display: flex;
 			padding: 15rpx;
 			justify-content: center;

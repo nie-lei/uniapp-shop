@@ -53,7 +53,7 @@
 		{
 			"path": "pages/feedback/index",
 			"style": {
-				"navigationBarTitleText": "反馈"
+				"navigationBarTitleText": "意见反馈"
 			}
 		},
 		{
@@ -148,6 +148,16 @@
 					{
 						"name": "授权页面", //模式名称
 						"path": "pages/auth/index", //启动页面，必选
+						"query": "goods_id=9832" //启动参数，在页面的onLoad函数里面得到。
+					},
+					{
+						"name": "搜索页面", //模式名称
+						"path": "pages/search/index", //启动页面，必选
+						"query": "goods_id=9832" //启动参数，在页面的onLoad函数里面得到。
+					},
+					{
+						"name": "意见反馈", //模式名称
+						"path": "pages/feedback/index", //启动页面，必选
 						"query": "goods_id=9832" //启动参数，在页面的onLoad函数里面得到。
 					}
 	    ]
