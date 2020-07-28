@@ -92,7 +92,8 @@
 			}
 		},
 		onLoad(options) {
-			this.queryParams.cid = options.cid;
+			this.queryParams.cid = options.cid||"";
+			this.queryParams.query = options.query||"";
 			this.getGoodsList();
 		},
 		//页面触底监听

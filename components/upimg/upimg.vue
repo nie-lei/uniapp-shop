@@ -24,7 +24,6 @@
 		},
 		methods:{
 			deleteImg(index){
-				console.log(index)
 				this.$emit("deleteImg",index);
 			}
 		}

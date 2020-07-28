@@ -18,7 +18,7 @@
 		    indicator-dots 
 		    display-multiple-items="1">
 		    <swiper-item v-for="item of swiperList" :key="goods_id">
-		      <navigator>
+		      <navigator :url="'/pages/goods_detail/index?goods_id='+item.goods_id">
 		        <image mode="widthFix" :src="item.image_src"></image>
 		      </navigator>
 		    </swiper-item>
@@ -29,7 +29,9 @@
 		<view class="index_cate">
 		  <navigator 
 		    v-for="item of catesList"
-		    :key="name">
+		    :key="name"
+				:url="item.navigator_url"
+				open-type="reLaunch">
 		  <image :src="item.image_src" mode="widthFix"/>
 		  </navigator>
 		</view>
@@ -49,6 +51,7 @@
 		      <navigator
 		        v-for="(item2,index2) of item1.product_list"
 		        :key="name"
+						:url="item2.navigator_url"
 		      >
 		      <!-- mode:判断是否为第一个元素，是：根据宽等比例缩放，否：等于标签宽高 -->
 		      <image :src="item2.image_src" :mode="index2===0?'widthFix':'scaleToFill'"></image>
@@ -57,7 +60,7 @@
 		    </view>
 		  </view>
 		</view>
-		<!-- 楼层显示结束 -->  
+		<!-- 楼层显示结束 -->
 	</view>
 </template>
 
@@ -99,17 +102,30 @@
 					this.$myRequest({url:'/home/catitems'}).then(
 					data=>{
 						this.catesList = data.data.message;
-						
+						this.catesList.filter(v=>{
+							v.navigator_url = v.navigator_url?v.navigator_url.replace("/main","/index"):""
+						})
 					})
 			  },
 			  //获取楼层数据
 			  getFloorList(){
 			    uni.request({
-					url:"https://api-hmugo-web.itheima.net/api/public/v1/home/floordata",
-					success: (data) => {
-						this.floorList=data.data.message
-					}
-					
+						url:"https://api-hmugo-web.itheima.net/api/public/v1/home/floordata",
+						success: (data) => {
+							this.floorList=data.data.message
+							this.floorList.forEach((list)=>{
+								// console.log(list)
+								list.product_list.forEach((v)=>{
+									let navigator_url = v.navigator_url
+									v.navigator_url = navigator_url?
+										navigator_url.slice(0,navigator_url.indexOf("?"))
+										+"/index"
+										+navigator_url.slice(navigator_url.indexOf("?"))
+										:""
+									// console.log(navigator_url);
+								})
+							})
+						}
 				})
 			  }
 		},

@@ -60,6 +60,7 @@ export const showToast= ({title})=>{
 		uni.showToast({
 			title: title,
 			icon:"none",
+			mask:true,
 			success:  (res)=> {
 				resolve(res);
 			},
