@@ -28,7 +28,7 @@
 		},
 		methods:{
 			handleInput(e){
-				console.log(e.target.value)
+				// console.log(e.target.value)
 				const {value} = e.detail;
 				if(!value.trim()){
 					this.hendleCancel();

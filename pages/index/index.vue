@@ -1,7 +1,9 @@
 <template>
 	<view>
 		<!-- 搜索框开始 -->
-		<search-input></search-input>
+		<view class="si">
+			<search-input></search-input>
+		</view>
 		<!-- 搜索框结束 -->
 		 <!-- 轮播图开始 -->
 		<view class="index_swiper">
@@ -25,8 +27,14 @@
 		  </swiper>
 		</view>
 		<!-- 轮播图结束 -->
+		<view class="index_text">
+			<text class="iconfont icon-credit-level">官方商城</text>
+			|<text class="iconfont icon-security">正品保障</text>|
+			<text class="iconfont icon-product">活动多多</text>
+		</view>
+		
 		<!-- 导航菜单开始 -->
-		<view class="index_cate">
+		<!-- <view class="index_cate">
 		  <navigator 
 		    v-for="item of catesList"
 		    :key="name"
@@ -34,8 +42,38 @@
 				open-type="reLaunch">
 		  <image :src="item.image_src" mode="widthFix"/>
 		  </navigator>
-		</view>
+		</view> -->
 		<!-- 导航菜单结束 -->
+		
+		<!-- 轮播式导航菜单开始 -->
+		<view class="swiper_main">
+			<swiper class="swiper" 
+				circular 
+		    indicator-dots >
+				<swiper-item class="swiper_item"
+					v-for="(item,index) of floorList"
+					:key="floor_title"
+				>
+					<navigator class="swiper_item_child"
+						v-for="item of catesList"
+						:key="name"
+						:url="item.navigator_url"
+						open-type="reLaunch">
+					<image :src="item.image_src" mode="widthFix"/>
+					</navigator>
+					<navigator class="swiper_item_child"
+						v-for="item of catesList"
+						:key="name"
+						:url="item.navigator_url"
+						open-type="reLaunch">
+					<image :src="item.image_src" mode="widthFix"/>
+					</navigator>
+				</swiper-item>
+			</swiper>
+		</view>
+		<!-- 轮播式导航菜单结束 -->
+		
+		
 		<!-- 楼层显示开始 -->
 		<view class="index_floor">
 		  <view class="floor_group"
@@ -67,9 +105,11 @@
 <script>
 	import searchInput from "../../components/searchInput/searchInput.vue"
 	import {myRequest} from "../../util/api.js"
+	import mySwiper from "../../components/swiper/mySwiper.vue"
 	export default {
 		components:{
-			searchInput
+			searchInput,
+			mySwiper
 		},
 		data() {
 			return {
@@ -141,8 +181,20 @@
 </script>
 
 <style lang="less">
-
-	
+	.index_text{
+		margin-top: 6rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: var(--themeColor);
+		text{
+			font-size: 24rpx;
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
 	.index_swiper{
 		image{
 			width: 100%;
@@ -152,13 +204,7 @@
 		  height: 340upx;
 		}
 	}
-	/* .index_swiper image{
-	  width: 100%;
-	}
-	.index_swiper swiper{
-	  width: 750upx;
-	  height: 340upx;
-	} */
+
 	.index_cate{
 	  display: flex;
 		navigator{
@@ -169,13 +215,7 @@
 		  padding: 20upx;
 		}
 	}
-	/* .index_cate navigator{
-	  flex: 1;
-	}
-	.index_cate image{
-	  width:100%;
-	  padding: 20upx;
-	} */
+
 	.index_floor {
 	
 	}
@@ -205,4 +245,30 @@
 	  height: 100%;
 	  
 	} 
+	.swiper_main{
+		padding: 15rpx;
+		.swiper{
+			width: 750rpx;
+			height: 390rpx;
+			.swiper_item{
+				display: flex;
+				flex-wrap: wrap;
+				.swiper_item_child{
+					height: 170rpx;
+					width: 20%;
+					padding: 10rpx;
+					image{
+						width: 100%;
+						border-radius: 35rpx;
+					}
+					text{
+						text-align: center;
+						font-size: 20rpx;
+						
+					}
+				}
+			}
+		}
+	}
+	
 </style>

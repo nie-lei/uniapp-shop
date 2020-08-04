@@ -140,13 +140,14 @@ template{
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				font-size: 30rpx;
-				border-top: 1px solid #eee;
+				font-size: 24rpx;
+				/* border-top: 1px solid #eee; */
 			}
 			.active{
-				background-color: var(--themeColor);
+				/* background-color: var(--themeColor); */
 				font-weight: 700;
-				color: white;
+				color: var(--themeColor);
+				padding: 10rpx;
 			}
 		}
 		.right_content{

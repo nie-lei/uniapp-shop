@@ -66,7 +66,7 @@
 					</view>
 				</view>
 				<!-- 收货地址管理 -->
-				<view class="adress_wrap">
+				<view class="adress_wrap" @click="handleChooseAddress">
 					收货地址管理
 				</view>
 				<!-- 应用信息相关 -->
@@ -98,6 +98,27 @@
 			const user = uni.getStorageSync("userInfo")
 			this.userInfo = user;
 			
+		},
+		methods:{
+			async handleChooseAddress(){
+				try{
+					//1.获取权限状态
+					const res1 = await this.$myUniApi.getSetting();
+					const scopeAddress = res1.authSetting["scope.address"];
+					//2.判断权限状态
+					if(scopeAddress ===false){
+						//3.诱导用户打开设置
+						await this.$myUniApi.openSetting();
+					}
+					//4.调用获取收获地址的api
+					let address = await this.$myUniApi.chooseAddress();
+					address.all = address.provinceName + address.cityName+address.countyName + address.detailInfo;
+					//5.将地址信息存入缓存中
+					uni.setStorageSync("address",address)
+				}catch(err){
+					console.log(err)
+				}
+			}
 		}
 	}
 </script>

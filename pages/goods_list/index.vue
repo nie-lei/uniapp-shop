@@ -148,6 +148,7 @@
 
 <style lang="less">
 	.first_tab{
+		padding: 20rpx;
 		text-align: center;
 		.goods_item{
 			display: flex;
