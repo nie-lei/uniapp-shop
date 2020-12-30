@@ -2,7 +2,8 @@
 let ajaxTimes=0;//设置同时请求的数量，
 export const myRequest = (options)=>{
 	ajaxTimes++;
-	const BASE_URL = "https://api-hmugo-web.itheima.net/api/public/v1";
+	// const BASE_URL = "https://api-hmugo-web.itheima.net/api/public/v1";
+	const BASE_URL = "https://localhost:8888";
 	//显示加载效果
 	uni.showLoading({
 		title: '加载中',
